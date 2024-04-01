@@ -1,0 +1,56 @@
+.avatarBlock {
+    .heart,
+    .download,
+    .chat {
+        cursor: pointer;
+    }
+
+    .delete__block {
+        position: absolute;
+        z-index: 10;
+        top: -12px;
+        right: -12px;
+
+        .delete {
+            cursor: pointer;
+        }
+    }
+
+    .download__block {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        width: 36px;
+        height: 28px;
+        top: 0;
+        right: 0;
+        border-radius: 0 0 0 10px;
+        background-color: #2B3035;
+    }
+
+    footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 12px;
+        width: 100%;
+        height: 40px;
+        background-color: #2B3035;
+        border-radius: 0 0 10px 10px;
+
+        .heart__block {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            .rating {
+                font-size: 0.9rem;
+            }
+        }
+    }
+}
+
+.red {
+    color: red;
+}

@@ -1,0 +1,53 @@
+@import '../../styles/variables.scss';
+
+.sub__block {
+    min-width: 340px;
+    height: calc(100vh - $headerHeightSize - 40px);
+    padding: 20px;
+
+    .user__block {
+        background-color: #1E1E1E;
+        padding: 12px;
+        border-radius: 25px;
+
+        .user__login {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .user__colAvatars {
+            font-size: 0.8em;
+        }
+    }
+
+    .btn__sub__block {
+        background-color: #1E1E1E;
+        font-size: 0.8em;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 30px;
+    }
+
+    .btn__active {
+        background-color: #3E3E3E;
+    } 
+
+    .user__avatar {
+        border-radius: 90px;
+    }
+
+    .content {
+        overflow: auto;
+    }
+    
+    .content::-webkit-scrollbar {
+        background-color: #3E3E3E;
+        width: 6px;
+    }
+}
+
+@media (max-width: 576px) {
+    .sub__block {
+        display: none !important;
+    }
+}

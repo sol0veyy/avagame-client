@@ -1,0 +1,22 @@
+.avatarsBlockProfile {
+    display: grid;
+    margin-top: 40px;
+    grid-template-columns: repeat(auto-fit, 150px);
+    grid-template-rows: repeat(auto-fit, 150px);
+    justify-content: center;
+    gap: 20px;
+}
+
+.noAvatars {
+    display: flex;
+    justify-content: center;
+    color: #777777;
+    width: auto;
+    margin-top: 120px;
+}
+
+@media (max-width: 576px) {
+    .avatarsBlockProfile {
+        margin: 0 0 80px;
+    }
+}

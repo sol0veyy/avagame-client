@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+      "jsx": "preserve",
+      "esModuleInterop": true,
+      "plugins": [{"name": "typescript-plugin-css-modules"}]
+  }
+}

@@ -1,0 +1,10 @@
+@import '../../styles/variables.scss';
+
+header {
+    background-color: #2B3035;
+
+    nav {
+        display: flex;
+        padding: 8px;
+    }
+}

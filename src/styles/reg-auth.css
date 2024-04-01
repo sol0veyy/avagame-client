@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+.main {
+    height: 80vh;
+}
+
+/* Видимость пароля */
+
+.password__input {
+    position: relative;
+}
+
+.password__control {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: 8px;
+    right: 20px;
+    cursor: pointer;
+}

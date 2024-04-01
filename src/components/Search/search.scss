@@ -1,0 +1,10 @@
+.search {
+    width: 360px;
+    margin-bottom: 24px;
+}
+
+@media (max-width: 576px) {
+    .search {
+        width: 100%;
+    }
+}

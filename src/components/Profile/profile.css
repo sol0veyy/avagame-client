@@ -1,0 +1,55 @@
+.profileInfo {
+    display: flex;
+    flex-flow: column;
+    padding: 40px;
+}
+
+.infoBlock {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.profileInfo .avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.nickname {
+    color: #fff;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.col-avatar {
+    color: #999;
+}
+
+.formСhangeSettings input[type="text"],
+.formСhangeSettings input[type="password"],
+.formСhangeSettings input[type="email"] {
+    font-size: 16px;
+    padding: 5px 5px 5px 10px;
+    width: 250px;
+    height: 30px;
+    margin: 10px 0 10px 0;
+}
+
+.formСhangeSettings input[type=file] {
+    color: #fff;
+}
+
+.formСhangeSettings input[type=file]::file-selector-button {
+    margin-right: 20px;
+    border: 2px solid #0de23b;
+    background: #15171E;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    transition: background .2s ease-in-out;
+    margin-bottom: 15px;
+}

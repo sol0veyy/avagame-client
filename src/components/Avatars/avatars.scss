@@ -1,0 +1,11 @@
+.avatars__block {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+@media (max-width: 576px) {
+    .avatars__block {
+        padding: 0;
+    }
+}

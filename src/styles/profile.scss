@@ -1,0 +1,10 @@
+.profile {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+@media (max-width: 576px) {
+    .profile {
+        display: block;
+    }
+}
