@@ -38,11 +38,18 @@
 
     .content {
         overflow: auto;
+        padding-right: 12px;
     }
     
     .content::-webkit-scrollbar {
         background-color: #3E3E3E;
+        border-radius: 4px;
         width: 6px;
+    }
+
+    .content::-webkit-scrollbar-thumb {
+        background-color: #95989A;
+        border-radius: 4px;
     }
 }
 
