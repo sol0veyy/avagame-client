@@ -4,6 +4,7 @@ import { delLike, getLike, setLikes } from "../../../http/avatarsAPI";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../../features/users/usersSlice";
 import { IAvatar } from "../../../features/avatars/interface";
+import CommentBlock from "../../CommentBlock/CommentBlock";
 
 interface IPropsAvatar {
     clickDel?: (avatar: IAvatar) => void;
@@ -17,6 +18,7 @@ const Avatar = ({ clickDel, clickDownload, avatar, profile }: IPropsAvatar) => {
 
     const [userAvatar, setUserAvatar] = useState(avatar);
     const [onLike, setOnLike] = useState(false);
+    const [activeCommentBlock, setActiveCommentBlock] = useState(false);
     
     useEffect(() => {
         getLike(userAvatar.id, user.id)
@@ -70,12 +72,13 @@ const Avatar = ({ clickDel, clickDownload, avatar, profile }: IPropsAvatar) => {
                     </svg>
                     <div className={`rating ${onLike ? 'red' : ''}`}>{userAvatar.likes.length}</div>
                 </div>
-                <div className="chat__block">
+                <div className="chat__block" onClick={() => setActiveCommentBlock(true)}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="chat bi bi-chat-fill" viewBox="0 0 16 16">
                         <path d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9 9 0 0 0 8 15"/>
                     </svg>
                 </div>
             </footer>
+            <CommentBlock active={activeCommentBlock} />
         </div>
     );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../profile.css';
+import '../profile.scss';
 import { useNavigate } from 'react-router-dom';
 import { MAIN_ROUTE } from '../../../utils/consts';
 import { useDispatch, useSelector } from 'react-redux';

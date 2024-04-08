@@ -1,5 +1,5 @@
 import React from 'react';
-import "./modal.css";
+import "./modal.scss";
 
 interface IPropsModal {
     active: boolean;

@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "jsx": "react",
+        "jsx": "react-jsx",
         "plugins": [{ "name": "typescript-plugin-css-modules" }],
         "outDir": "./dist/",
         "noImplicitAny": true,

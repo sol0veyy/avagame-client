@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { REGISTRATION_ROUTE, LOGIN_ROUTE, PROFILE_ROUTE } from "../../utils/consts";
 
-import React from "react";
 import "./profileButton.scss";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../features/users/usersSlice";

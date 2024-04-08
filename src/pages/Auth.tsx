@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { LOGIN_ROUTE, MAIN_ROUTE, REGISTRATION_ROUTE } from "../utils/consts";
-import "../styles/reg-auth.css";
+import "../styles/reg-auth.scss";
 import { loginIn, registration } from "../http/userAPI";
 import { useDispatch } from "react-redux";
 import { IUser, setUser } from "../features/users/usersSlice";

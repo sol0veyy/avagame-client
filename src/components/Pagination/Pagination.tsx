@@ -1,6 +1,6 @@
 import React, { SetStateAction } from 'react';
 import PaginationBlock from './PaginationBlock';
-import './pagination.css';
+import './pagination.scss';
 
 interface IPropsPagination {
     pages: number[];

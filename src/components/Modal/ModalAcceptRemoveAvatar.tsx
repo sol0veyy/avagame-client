@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from './Modal';
-import './modal.css';
+import './modal.scss';
 import { deleteAvatar } from '../../http/avatarsAPI';
 import { useDispatch, useSelector } from 'react-redux';
 import { removePublication, selectUser } from '../../features/users/usersSlice';

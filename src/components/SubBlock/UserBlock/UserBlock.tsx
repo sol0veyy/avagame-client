@@ -35,7 +35,7 @@ const UserBlock = ({ otherUser }: IUserBlock) => {
         <div className="user__block d-flex mb-3">
             <button 
                 className="p-0 btn__reset"
-                onClick={() => navigate(`${otherUser.login + PROFILE_ROUTE}`)}
+                onClick={() => navigate(`/${otherUser.login + PROFILE_ROUTE}`)}
             >
                 <img className="user__avatar" src={process.env.REACT_APP_API_URL + otherUser.img} alt="avatar" width={50} height={50} />
             </button>
@@ -43,7 +43,7 @@ const UserBlock = ({ otherUser }: IUserBlock) => {
                 <div className="d-flex flex-column justify-content-around align-items-start mx-2">
                     <button 
                         className="user__login btn__reset"
-                        onClick={() => navigate(`${otherUser.login + PROFILE_ROUTE}`)}
+                        onClick={() => navigate(`/${otherUser.login + PROFILE_ROUTE}`)}
                     >{otherUser.login}</button>
                     <span className="user__colAvatars text-secondary">{otherUser.publications + " " + getNoun(otherUser.publications, "аватарка", "аватарки", "аватарок")}</span>
                 </div>

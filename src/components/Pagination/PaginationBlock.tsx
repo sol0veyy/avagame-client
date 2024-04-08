@@ -1,5 +1,5 @@
 import React, { SetStateAction } from 'react';
-import './pagination.css';
+import './pagination.scss';
 
 interface IPropsPaginationBlock {
     page: number;
