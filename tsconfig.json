@@ -1,7 +1,14 @@
 {
-  "compilerOptions": {
-      "jsx": "preserve",
-      "esModuleInterop": true,
-      "plugins": [{"name": "typescript-plugin-css-modules"}]
-  }
+    "compilerOptions": {
+        "jsx": "react",
+        "plugins": [{ "name": "typescript-plugin-css-modules" }],
+        "outDir": "./dist/",
+        "noImplicitAny": true,
+        "module": "ESNext",
+        "target": "es5",
+        "allowJs": true,
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true
+    }
 }

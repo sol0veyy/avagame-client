@@ -24,7 +24,7 @@ const ModalUploadAvatar = ({ modalActive, setModalActive}: IPropsModalUploadAvat
     const [viewImg, setViewImg] = useState(false);
     const [file, setFile] = useState(null);
 
-    const selectFile = e => {
+    const selectFile = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFile(e.target.files[0]);
         setErrorImg("");
         setViewImg(true);

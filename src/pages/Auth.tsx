@@ -41,7 +41,7 @@ const Auth = () => {
         setError('');
     };
 
-    const correctInput = (e) => {
+    const correctInput = (e: React.KeyboardEvent) => {
         if (e.key === ' ') {
             e.preventDefault();
         }

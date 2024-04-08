@@ -1,19 +1,20 @@
 import { $authHost, $host } from ".";
+import { IUser } from "../features/users/usersSlice";
 import { update } from "./userAPI";
 
-export const createAvatar = async (avatar, user) => {
-    const {data} = await $authHost.post('api/avatar', avatar);
+export const createAvatar = async (avatarFormData: FormData, user: IUser) => {
+    const {data} = await $authHost.post('api/avatar', avatarFormData);
     await update(user.id);
     return data;
 };
 
-export const deleteAvatar = async (avatarId, userId) => {
+export const deleteAvatar = async (avatarId: number, userId: number) => {
     const {data} = await $authHost.post('api/avatar/del', {avatarId, userId});
     await update(userId);
     return data;
 };
 
-export const setLikes = async (avatarId, userId) => {
+export const setLikes = async (avatarId: number, userId: number) => {
     try {
         const {data} = await $authHost.post('api/avatar/like', {avatarId, userId});
         return data;
@@ -22,7 +23,7 @@ export const setLikes = async (avatarId, userId) => {
     }
 };
 
-export const delLike = async (avatarId, userId) => {
+export const delLike = async (avatarId: number, userId: number) => {
     try {
         const {data} = await $authHost.post('api/avatar/like/del', {avatarId, userId});
         return data;
@@ -31,7 +32,7 @@ export const delLike = async (avatarId, userId) => {
     }
 };
 
-export const getLike = async (avatarId, userId) => {
+export const getLike = async (avatarId: number, userId: number) => {
     try {
         const {data} = await $host.get('api/avatar/like/' + avatarId + "/" + userId);
         return data;
@@ -40,17 +41,17 @@ export const getLike = async (avatarId, userId) => {
     }
 };
 
-export const getByTag = async (tag) => {
+export const getByTag = async (tag: string) => {
     const {data} = await $host.get('api/avatar/tag/' + tag);
     return data;
 };
 
-export const getAll = async (page) => {
+export const getAll = async (page: number) => {
     const {data} = await $host.get('api/avatar/' + page);
     return data;
 };
 
-export const getUserAvatars = async (userId) => {
+export const getUserAvatars = async (userId: number) => {
     const {data} = await $host.get('api/avatar/user/' + userId);
     return data;
 };

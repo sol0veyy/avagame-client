@@ -22,15 +22,13 @@
     "react-dom": "^18.2.0",
     "react-redux": "^9.1.0",
     "react-router-dom": "^6.8.2",
-    "react-scripts": "5.0.1",
     "typescript-plugin-css-modules": "^5.0.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "webpack serve --env mode=development",
+    "build:dev": "webpack --env mode=development",
+    "build:prod": "webpack --env mode=production"
   },
   "eslintConfig": {
     "extends": [
@@ -52,8 +50,18 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.16",
+    "css-loader": "^7.0.0",
+    "html-webpack-plugin": "^5.6.0",
+    "node-sass": "^9.0.0",
     "postcss": "^8.4.33",
     "sass": "^1.59.2",
-    "tailwindcss": "^3.4.1"
+    "sass-loader": "^14.1.1",
+    "style-loader": "^3.3.4",
+    "tailwindcss": "^3.4.1",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.4.3",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4"
   }
 }

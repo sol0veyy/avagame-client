@@ -19,7 +19,7 @@ const ChangeSettings = ({ modalActive, setModalActive }: IChangeSettings) => {
     const [isFile, setIsFile] = useState("");
     const [error, setError] = useState("");
 
-    const selectFile = (e) => {
+    const selectFile = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFile(e.target.files[0]);
         setIsFile("true");
     };

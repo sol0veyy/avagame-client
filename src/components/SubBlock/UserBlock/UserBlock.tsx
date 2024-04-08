@@ -7,6 +7,7 @@ import { PROFILE_ROUTE } from "../../../utils/consts";
 import { follow_unfollow } from "../../../http/Follower/followerFunctions";
 import { useSelector } from "react-redux";
 import { IUser, selectUser } from "../../../features/users/usersSlice";
+import React from "react";
 
 interface IUserBlock {
     otherUser: IUser;

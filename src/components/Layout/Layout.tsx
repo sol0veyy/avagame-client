@@ -3,7 +3,11 @@ import React from 'react';
 import Header from '../Header/Header';
 import './layout.scss';
 
-const Layout = ({ children }) => {
+interface ILayout {
+    children: React.JSX.Element;
+}
+
+const Layout = ({ children }: ILayout) => {
     return (
         <div className='layout'>
             <Header />

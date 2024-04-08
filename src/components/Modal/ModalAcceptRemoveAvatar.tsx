@@ -6,23 +6,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { removePublication, selectUser } from '../../features/users/usersSlice';
 import { IAvatar } from '../../features/avatars/interface';
 import { setAvatars } from '../../features/avatars/avatarsSlice';
+import { IModalAccept } from '../Avatars/UserAvatars/UserAvatars';
 
-interface IModalAccept {
-    modalAccept: {
-        active: boolean;
-        avatar: object;
-    };
-    setModalAccept: React.Dispatch<React.SetStateAction<{
-        active: boolean;
-        avatar: object;
-    }>>;
+interface IModalAcceptRemoveAvatar {
+    modalAccept: IModalAccept
+    setModalAccept: React.Dispatch<React.SetStateAction<IModalAccept>>;
 }
 
-const ModalAcceptRemoveAvatar = ({modalAccept, setModalAccept}: IModalAccept) => {
+const ModalAcceptRemoveAvatar = ({modalAccept, setModalAccept}: IModalAcceptRemoveAvatar) => {
     const user = useSelector(selectUser);
     const dispatch = useDispatch();
 
-    const delAvatar = async (avatar) => {
+    const delAvatar = async (avatar: IAvatar) => {
         deleteAvatar(avatar.id, user.id)
             .then((avatars: IAvatar[]) => {
                 dispatch(setAvatars([...avatars]));

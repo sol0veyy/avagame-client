@@ -3,11 +3,14 @@ import Main from "./pages/Main";
 import Profile from "./pages/Profile";
 import { LOGIN_ROUTE, MAIN_ROUTE, PROFILE_ROUTE, REGISTRATION_ROUTE } from "./utils/consts";
 
-export const authRoutes = [
+interface IRoutes {
+    path: string;
+    Component: () => React.JSX.Element;
+}
 
-];
+export const authRoutes: IRoutes[] = [];
 
-export const publicRoutes = [
+export const publicRoutes: IRoutes[] = [
     {
         path: MAIN_ROUTE,
         Component: Main

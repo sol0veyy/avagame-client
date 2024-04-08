@@ -2,15 +2,31 @@ import React, { useState } from "react";
 import Select from "../Select/Select";
 import "./filter.css"
 
-const DataFilter = {
+export interface IDataFilter {
+    time: string;
+    tags: string;
+    author: string;
+    category: number;
+}
+
+export interface IOptionDate {
+    value: string;
+    name: string;
+}
+
+const DataFilter: IDataFilter = {
     time: "",
     tags: "",
     author: "",
     category: 2
 }
 
-const Filter = ({filterAvatar}) => {
-    const optionsDate = [
+interface IFilter {
+    filterAvatar: (dataFilter: IDataFilter) => void;
+}
+
+const Filter = ({filterAvatar}: IFilter) => {
+    const optionsDate: IOptionDate[] = [
         {value: "", name: "За всё время"},
         {value: "day", name: "Сегодня"},
         {value: "week", name: "За эту неделю"},

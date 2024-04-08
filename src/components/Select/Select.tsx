@@ -1,8 +1,15 @@
 import React from "react";
 import Form from "react-bootstrap/Form";
 import "./select.css"
+import { IDataFilter, IOptionDate } from "../Filter/Filter";
 
-const Select = ({options, dataFilter, setDataFilter}) => {
+interface ISelect {
+    options: IOptionDate[];
+    dataFilter: IDataFilter;
+    setDataFilter: React.Dispatch<React.SetStateAction<IDataFilter>>;
+}
+
+const Select = ({options, dataFilter, setDataFilter}: ISelect) => {
     return (
         <Form.Select className="select" onChange={(e) => {
             setDataFilter({...dataFilter, time: e.target.value})

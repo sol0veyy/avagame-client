@@ -13,14 +13,19 @@ interface IPropsUserAvatars {
     clickDownload: (avatar: IAvatar) => void;
 }
 
+export interface IModalAccept {
+    active: boolean
+    avatar: IAvatar
+}
+
 const UserAvatars = ({ profileUser, clickDownload }: IPropsUserAvatars) => {
     const user = useSelector(selectUser);
     const avatars = useSelector(selectAvatars);
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(true);
-    const [modalAccept, setModalAccept] = useState({
+    const [modalAccept, setModalAccept] = useState<IModalAccept>({
         active: false,
-        avatar: {},
+        avatar: {} as IAvatar,
     });
 
     useEffect(() => {
