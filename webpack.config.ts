@@ -28,7 +28,7 @@ export default (env: EnvVariables) => {
             new htmlWebpackPlugin({template: path.resolve(__dirname, 'public', 'index.html')}),
             new webpack.ProgressPlugin(),
             new webpack.EnvironmentPlugin({
-                REACT_APP_API_URL: 'http://localhost:5000/'
+                REACT_APP_API_URL: 'http://185.187.91.72:5000/'
             }),
             isProd && new MiniCssExtractPlugin({
                 filename: '[name].[contenthash].css'
