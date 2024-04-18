@@ -1,5 +1,3 @@
-import React from 'react';
-import '../profile.scss';
 import { useNavigate } from 'react-router-dom';
 import { MAIN_ROUTE } from '../../../utils/consts';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,13 +5,13 @@ import {
     logout,
     selectUser
 } from '../../../features/users/usersSlice';
+import { Button, Card, CardBody, CardHeader, useDisclosure } from '@nextui-org/react';
+import UserAvatar from '@/components/UserAvatar/UserAvatar';
+import Logout from '@/assets/logout.svg';
+import AvatarUpload from '../AvatarUpload/AvatarUpload';
+import Settings from '../Settings/Settings';
 
-interface IPropsProfileInfo {
-    setUploadActive: (active: boolean) => void;
-	setSettingsActive: (active: boolean) => void;
-}
-
-const ProfileInfo = ({ setUploadActive, setSettingsActive }: IPropsProfileInfo) => {
+const ProfileInfo = () => {
     const navigate = useNavigate();
     const user = useSelector(selectUser);
     const dispatch = useDispatch();
@@ -25,43 +23,26 @@ const ProfileInfo = ({ setUploadActive, setSettingsActive }: IPropsProfileInfo) 
     };
 
     return (
-        <div className="profileInfo">
-            <div className="infoBlock">
-                <img
-                    src={process.env.REACT_APP_API_URL + user.img}
-                    className="avatar"
-                    alt="avatar"
-                />
-                <span className="nickname">{user.login}</span>
-                <span className="col-avatar">
-                    Количество аватарок - {user.publications}
-                </span>
-                <button
-                    className="w-75 btn btn-outline-primary"
-                    onClick={() => navigate(MAIN_ROUTE)}
-                >
-                    Главная
-                </button>
-                <button
-                    className="w-75 btn btn-outline-primary"
-                    onClick={() => setUploadActive(true)}
-                >
-                    Опубликовать аватарку
-                </button>
-                <button
-                    className="w-75 btn btn-outline-primary"
-                    onClick={() => setSettingsActive(true)}
-                >
-                    Настройки профиля
-                </button>
-                <button
-                    className="w-75 btn btn-outline-danger"
-                    onClick={handleLogout}
-                >
-                    Выйти с аккаунта
-                </button>
-            </div>
-        </div>
+        <>
+            <Card className='self-start'>
+                <CardHeader className='flex justify-between'>
+                    <UserAvatar user={user} size="lg" />
+                    <div className='flex items-center gap-4 self-start'>
+                        <Settings />
+                        <Logout 
+                            width={25} 
+                            height={25} 
+                            fill='red' 
+                            className='cursor-pointer'
+                            onClick={handleLogout} 
+                        />
+                    </div>
+                </CardHeader>
+                <CardBody className='flex items-center justify-center pb-6'>
+                    <AvatarUpload />
+                </CardBody>
+            </Card>
+        </>
     );
 };
 

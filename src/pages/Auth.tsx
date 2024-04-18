@@ -1,10 +1,13 @@
-import React, { useState } from "react";
-import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
-import { LOGIN_ROUTE, MAIN_ROUTE, REGISTRATION_ROUTE } from "../utils/consts";
-import "../styles/reg-auth.scss";
-import { loginIn, registration } from "../http/userAPI";
-import { useDispatch } from "react-redux";
-import { IUser, setUser } from "../features/users/usersSlice";
+import React, { useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { LOGIN_ROUTE, MAIN_ROUTE, REGISTRATION_ROUTE } from '../utils/consts';
+import '../styles/reg-auth.scss';
+import { loginIn, registration } from '../http/userAPI';
+import { useDispatch } from 'react-redux';
+import { IUser, setUser } from '../features/users/usersSlice';
+import PassView from '../assets/view.svg';
+import PassNoView from '../assets/no-view.svg';
+import { Button, Card, CardBody, CardFooter, CardHeader, Input } from '@nextui-org/react';
 
 const Auth = () => {
     const dispatch = useDispatch();
@@ -15,8 +18,8 @@ const Auth = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const [passView, setPassView] = useState(false);
-    const [typePass, setTypePass] = useState("password");
+    const [isPassView, setIsPassView] = useState(false);
+    const [typePass, setTypePass] = useState('password');
 
     const click = () => {
         if (isLogin) {
@@ -52,92 +55,92 @@ const Auth = () => {
     };
 
     const passOnView = () => {
-        if (passView) {
-            setPassView(false);
-            setTypePass("password");
+        if (isPassView) {
+            setIsPassView(false);
+            setTypePass('password');
         } else {
-            setPassView(true);
-            setTypePass("text");
+            setIsPassView(true);
+            setTypePass('text');
         }
     };
 
     return (
-        <div className="main position-relative">
-            <div className="w-25 position-absolute top-50 start-50 translate-middle">
-                <h1 className="text-center mb-4">{isLogin ? 'Авторизация' : 'Регистрация'}</h1>
-                <form className="row g-3 mb-4">
-                    <div className="col-12">
-                        <input
+        <div className='flex justify-center mt-36'>
+            <Card className="w-1/6 ">
+                <CardHeader>
+                    <div className='w-full'>
+                        <h1 className="text-center text-lg">
+                            {isLogin ? 'Авторизация' : 'Регистрация'}
+                        </h1>
+                    </div>
+                </CardHeader>
+                <CardBody>
+                    <form className='flex flex-col gap-3'>
+                        <Input
                             required
                             type="text"
-                            className="form-control"
                             name="login"
                             placeholder="Логин"
                             value={login}
                             onChange={e => setLogin(e.target.value)}
                             onKeyDown={e => correctInput(e)}
                         />
-                    </div>
-                    {!isLogin ?
-                        <div className="col-12">
-                            <input
+                        {!isLogin &&
+                            <Input
                                 required
                                 type="email"
-                                className="form-control"
                                 name="email"
                                 placeholder="Почта"
                                 value={email}
                                 onChange={e => setEmail(e.target.value)}
                                 onKeyDown={e => correctInput(e)}
                             />
+                        }
+                        <div className='password__input'>
+                            <Input
+                                required
+                                type={typePass}
+                                name="password"
+                                placeholder="Пароль"
+                                value={password}
+                                onChange={e => setPassword(e.target.value)}
+                                onKeyDown={e => correctInput(e)}
+                            />
+                            {isPassView ?
+                                <PassNoView onClick={passOnView} className="password__control" />
+                                :
+                                <PassView onClick={passOnView} className="password__control" />
+                            }
                         </div>
-                        :
-                        ''
-                    }
-                    <div className="password__input col-12">
-                        <input
-                            required
-                            type={typePass}
-                            className="form-control"
-                            name="pass"
-                            placeholder="Пароль"
-                            value={password}
-                            onChange={e => setPassword(e.target.value)}
-                            onKeyDown={e => correctInput(e)}
-                        />
-                        <img onClick={passOnView} src={passView ? 'img/no-view.svg' : 'img/view.svg'} className="password__control" alt="view"></img>
-                    </div>
-                    {error ?
-                        <div className="text-center text-danger">
-                            {error}
+                        {error &&
+                            <div className="text-center text-danger text-small">
+                                {error}
+                            </div>
+                        }
+                        <div className='flex gap-2'>
+                            <Link to={MAIN_ROUTE} className='basis-1/3'>
+                                <Button variant='bordered'>Главная</Button>
+                            </Link>
+                            <Button
+                                className='basis-2/3'
+                                color='primary'
+                                onClick={click}
+                            >{isLogin ? 'вход' : 'зарегистрироваться'}</Button>
                         </div>
+                    </form>
+                </CardBody>
+                <CardFooter>
+                    {isLogin ?
+                        <p className="text-center text-small">
+                            У вас нет аккаунта? - <Link className="text-success text-small" onClick={clearError} to={REGISTRATION_ROUTE}>зарегистрируйтесь</Link>
+                        </p>
                         :
-                        ''
+                        <p className="text-center text-small">
+                            У вас есть аккаунт? - <Link className="text-success text-small" onClick={clearError} to={LOGIN_ROUTE}>авторизируйтесь</Link>
+                        </p>
                     }
-                    <div className="col-4">
-                        <Link to={MAIN_ROUTE} className="form-control btn btn-outline-secondary">
-                            Главная
-                        </Link>
-                    </div>
-                    <div className="col-8">
-                        <input
-                            type="button"
-                            value={isLogin ? 'вход' : 'зарегистрироваться'}
-                            onClick={click}
-                            className="form-control btn btn-success"
-                        />
-                    </div>
-                </form>
-                {isLogin ?
-                    <p className="text-center">
-                        У вас нет аккаунта? - <NavLink className="text-decoration-none" onClick={clearError} to={REGISTRATION_ROUTE}>зарегистрируйтесь</NavLink>
-                    </p>
-                    :
-                    <p className="text-center">
-                        У вас есть аккаунт? - <NavLink className="text-decoration-none" onClick={clearError} to={LOGIN_ROUTE}>авторизируйтесь</NavLink>
-                    </p>
-                }
-            </div>
+                </CardFooter>
+            </Card>
         </div>
     );
 };

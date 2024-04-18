@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
-.main {
-    height: 80vh;
+@media (max-width: 576px) {
+    .reg-auth__block {
+        width: 85%;
+    }
 }
 
 /* Видимость пароля */
@@ -15,6 +17,6 @@
     width: 25px;
     height: 25px;
     top: 8px;
-    right: 20px;
+    right: 10px;
     cursor: pointer;
 }

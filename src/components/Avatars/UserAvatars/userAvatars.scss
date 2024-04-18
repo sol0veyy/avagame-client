@@ -1,10 +1,7 @@
 .avatarsBlockProfile {
-    display: grid;
-    margin-top: 40px;
-    grid-template-columns: repeat(auto-fit, 150px);
-    grid-template-rows: repeat(auto-fit, 150px);
-    justify-content: center;
-    gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
 }
 
 .noAvatars {
@@ -18,5 +15,10 @@
 @media (max-width: 576px) {
     .avatarsBlockProfile {
         margin: 0 0 80px;
+    }
+
+    .noAvatars {
+        margin: 0;
+        text-align: center;
     }
 }

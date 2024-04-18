@@ -3,6 +3,7 @@ import { useState } from "react";
 import "./SubBlock.scss";
 import AllUsers from "./AllUsers/AllUsers";
 import AllSubs from "./AllSubs/AllSubs";
+import { Button, Input } from "@nextui-org/react";
 
 export interface ISubBlockContent {
     findText: string;
@@ -30,20 +31,25 @@ const SubBlock = () => {
     };
 
     return (
-        <div className="sub__block d-flex flex-column gap-3 bg-body-tertiary">
-            <div className="d-flex gap-3">
-                <button
-                    className={`${isActiveBlockMySubs ? 'btn__active' : ''} btn__sub__block`}
+        <div className="sub__block flex flex-col gap-3">
+            <div className="flex gap-3">
+                <Button 
+                    color="default" 
+                    variant={`${isActiveBlockMySubs ? 'bordered' : 'light'}`}
                     onClick={openBlockMySubs}
-                >Мои подписки</button>
-                <button 
-                    className={`${isActiveBlockAllUsers ? 'btn__active' : ''} btn__sub__block`}
+                >Мои подписки</Button>
+                <Button 
+                    color="default" 
+                    variant={`${isActiveBlockAllUsers ? 'bordered' : 'light'}`}
                     onClick={openBlockAllUsers}
-                >Все пользователи</button>
+                >Все пользователи</Button>
             </div>
-            <form className="d-flex" role="search">
-                <input 
-                    className="form-control" type="search" placeholder="Поиск" aria-label="Search" 
+            <form className="flex" role="search">
+                <Input 
+                    type="search"
+                    label="Поиск"
+                    size="sm"
+                    variant="underlined"
                     onChange={(event) => setFindText(event.target.value)}
                 />
             </form>

@@ -1,18 +1,20 @@
-import React, { SetStateAction } from 'react';
+import React from 'react';
 import { useEffect, useState } from 'react';
 import { createAvatar } from "../../http/avatarsAPI";
-import Modal from "./Modal";
 import { useDispatch, useSelector } from 'react-redux';
 import { addPublication, selectUser } from '../../features/users/usersSlice';
 import { setAvatars } from '../../features/avatars/avatarsSlice';
 import { IAvatar } from '../../features/avatars/interface';
+import { Button, Input, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from '@nextui-org/react';
+import FileInput from '../ui/FileInput/FileInput';
 
-interface IPropsModalUploadAvatar {
-    modalActive: boolean;
-    setModalActive: React.Dispatch<SetStateAction<boolean>>;
+interface ModalUploadAvatarProps {
+    isOpen: boolean;
+    onClose: () => void;
+    onOpenChange: () => void;
 }
 
-const ModalUploadAvatar = ({ modalActive, setModalActive}: IPropsModalUploadAvatar) => {
+const ModalUploadAvatar = ({ isOpen, onClose, onOpenChange }: ModalUploadAvatarProps) => {
     const user = useSelector(selectUser);
     const dispatch = useDispatch();
 
@@ -56,7 +58,7 @@ const ModalUploadAvatar = ({ modalActive, setModalActive}: IPropsModalUploadAvat
                 createAvatar(formData, user).then((avatars: IAvatar[])  => {
                     dispatch(setAvatars(avatars));
                     dispatch(addPublication());
-                    setModalActive(false);
+                    onClose();
                 });
                 setViewImg(false);
                 
@@ -67,50 +69,42 @@ const ModalUploadAvatar = ({ modalActive, setModalActive}: IPropsModalUploadAvat
     };
 
     return (
-        <Modal active={modalActive}>
-            <form>
-                {viewImg ?
-                    <div className='d-flex flex-column align-items-center gap-2 mb-3'>
-                        <img src={imgUrl} alt="img" width="300px" height="300px" />
-                        <p className='text-secondary-emphasis mb-0'>{sizeImg}</p>
-                        {errorImg ?
-                            <p className='text-danger mb-0'>{errorImg}</p>
-                            :
-                            ""
-                        }
-                    </div>
-                    :
-                    ""
-                }
-                <div className='mb-3'>
-                    <input 
-                        type="file" 
-                        className='form-control' 
-                        onChange={selectFile}
-                    />
-                </div>
-                <div className='upload_rules text-secondary-emphasis'>
-                    <p>Изображение должно быть:</p>
-                    <p>- в формате JPG или PNG</p>
-                    <p>- 1 к 1</p>
-                </div>
-                <div className='row'>
-                    <label htmlFor="inputTags" className='col-sm-2 col-form-label'>Теги</label>
-                    <div className='col-sm-10'>
-                        <input 
+        <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+            <ModalContent>
+                <ModalHeader>
+                    Публикация аватарки
+                </ModalHeader>
+                <ModalBody>
+                    {viewImg &&
+                        <div className='flex flex-col items-center gap-2 mb-3'>
+                            <img src={imgUrl} alt="img" width={300} height={300} />
+                            <p className='text-default-400'>{sizeImg}</p>
+                            {errorImg &&
+                                <p className='text-danger'>{errorImg}</p>
+                            }
+                        </div>
+                    }
+                    <form className='flex flex-col gap-3' autoComplete='off'>
+                        <FileInput selectFile={selectFile} />
+                        <div className='text-sm text-default-400'>
+                            <p>Изображение должно быть:</p>
+                            <p>- в формате JPG или PNG</p>
+                            <p>- 1 к 1</p>
+                        </div>
+                        <Input 
+                            size='sm'
                             id='inputTags' 
                             type="text" 
-                            className='form-control' 
-                            placeholder='#anime' 
+                            label="Теги"
                             onChange={(e) => setTags(e.target.value)}
                         />
-                    </div>
-                </div>
-            </form>
-            <div className="d-flex justify-content-end gap-2 mt-3">
-                <button className='btn btn-outline-secondary' onClick={() => setModalActive(false)}>Закрыть</button>
-                <button className='btn btn-success' onClick={uploadAvatar}>Опубликовать</button>
-            </div>
+                    </form>
+                </ModalBody>
+                <ModalFooter>
+                    <Button variant='bordered' onClick={onClose}>Закрыть</Button>
+                    <Button color='success' onClick={uploadAvatar}>Опубликовать</Button>
+                </ModalFooter>
+            </ModalContent>
         </Modal>
     );
 };

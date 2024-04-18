@@ -1,7 +1,4 @@
-/* eslint-disable react/prop-types */
-import React from 'react';
 import Header from '../Header/Header';
-import './layout.scss';
 
 interface ILayout {
     children: React.JSX.Element;
@@ -9,7 +6,7 @@ interface ILayout {
 
 const Layout = ({ children }: ILayout) => {
     return (
-        <div className='layout'>
+        <div className='min-h-screen'>
             <Header />
             {children}
         </div>

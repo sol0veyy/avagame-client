@@ -1,10 +1,19 @@
 @import '../../styles/variables.scss';
 
 header {
-    background-color: #2B3035;
-
     nav {
         display: flex;
         padding: 8px;
+
+        .offcanvas {
+            width: 65% !important;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    nav {
+        display: flex;
+        justify-content: space-between;
     }
 }

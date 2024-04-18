@@ -25,10 +25,13 @@ export default (env: EnvVariables) => {
             clean: true
         },
         plugins: [
-            new htmlWebpackPlugin({template: path.resolve(__dirname, 'public', 'index.html')}),
+            new htmlWebpackPlugin({
+                template: path.resolve(__dirname, 'public', 'index.html'),
+                favicon: path.resolve(__dirname, 'public', 'favicon.ico')
+            }),
             new webpack.ProgressPlugin(),
             new webpack.EnvironmentPlugin({
-                REACT_APP_API_URL: 'http://185.187.91.72:5000/'
+                REACT_APP_API_URL: 'http://localhost:5000/'
             }),
             isProd && new MiniCssExtractPlugin({
                 filename: '[name].[contenthash].css'
@@ -36,6 +39,10 @@ export default (env: EnvVariables) => {
         ],
         module: {
             rules: [
+                {
+                    test: /\.css$/i,
+                    use: ["style-loader", "css-loader", "postcss-loader"],
+                },
                 {
                     test: /\.s[ac]ss$/i,
                     use: [
@@ -52,10 +59,28 @@ export default (env: EnvVariables) => {
                     use: 'ts-loader',
                     exclude: /node_modules/,
                 },
+                {
+                    test: /\.(png|jpg|jpeg|gif)$/i,
+                    type: 'asset/resource',
+                },
+                {
+                    test: /\.svg$/i,
+                    use: [
+                        { 
+                            loader: '@svgr/webpack', 
+                            options: { 
+                                icon: true 
+                            } 
+                        }
+                    ],
+                },
             ],
         },
         resolve: {
             extensions: ['.tsx', '.ts', '.js'],
+            alias: {
+                '@': path.resolve(__dirname, 'src')
+            }
         },
         devtool: isDev && 'inline-source-map',
         devServer: isDev ? {

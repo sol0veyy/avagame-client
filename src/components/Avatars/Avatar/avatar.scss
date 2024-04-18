@@ -1,7 +1,8 @@
 .avatarBlock {
     .heart,
     .download,
-    .chat {
+    .chat,
+    .delete {
         cursor: pointer;
     }
 
@@ -26,7 +27,7 @@
         top: 0;
         right: 0;
         border-radius: 0 0 0 10px;
-        background-color: #2B3035;
+        background-color: #18181B;
     }
 
     footer {
@@ -36,7 +37,7 @@
         padding: 0 12px;
         width: 100%;
         height: 40px;
-        background-color: #2B3035;
+        background-color: #18181B;
         border-radius: 0 0 10px 10px;
 
         .heart__block {

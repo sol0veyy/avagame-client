@@ -7,6 +7,7 @@ import { removePublication, selectUser } from '../../features/users/usersSlice';
 import { IAvatar } from '../../features/avatars/interface';
 import { setAvatars } from '../../features/avatars/avatarsSlice';
 import { IModalAccept } from '../Avatars/UserAvatars/UserAvatars';
+import { Button, Card, CardBody } from '@nextui-org/react';
 
 interface IModalAcceptRemoveAvatar {
     modalAccept: IModalAccept
@@ -32,13 +33,15 @@ const ModalAcceptRemoveAvatar = ({modalAccept, setModalAccept}: IModalAcceptRemo
 
     return (
         <Modal active={modalAccept.active}>
-            <div>
-                <div className='text-center mb-3'>Удаление аватарки</div>
-                <div className='d-flex gap-3'>
-                    <button className='btn btn-outline-secondary' onClick={() => setModalAccept({...modalAccept, active: false})}>Отмена</button>
-                    <button className='btn btn-danger' onClick={() => delAvatar(modalAccept.avatar)}>Удалить</button>
-                </div>
-            </div>
+            <Card>
+                <CardBody>
+                    <div className='text-center mb-3'>Удаление аватарки</div>
+                    <div className='flex gap-3'>
+                        <Button variant='bordered' onClick={() => setModalAccept({...modalAccept, active: false})}>Отмена</Button>
+                        <Button color='danger' onClick={() => delAvatar(modalAccept.avatar)}>Удалить</Button>
+                    </div>
+                </CardBody>
+            </Card>
         </Modal>
     );
 };

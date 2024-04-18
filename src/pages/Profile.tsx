@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from "react";
-import "../styles/profile.scss";
+import { useEffect, useState } from "react";
 import UserAvatars from "../components/Avatars/UserAvatars/UserAvatars";
 import { clickDownload } from "../components/Avatars/functions";
 import { useParams } from "react-router-dom";
 import { getUserByLogin } from "../http/userAPI";
 import UserProfile from "../components/Profile/UserProfile/UserProfile";
 import ViewProfile from "../components/Profile/ViewProfile/ViewProfile";
-import Layout from "../components/Layout/Layout";
 import { IUser, selectUser } from "../features/users/usersSlice";
 import { useSelector } from "react-redux";
+import '../styles/profile.scss';
 
 const Profile = () => {
     const user = useSelector(selectUser);
@@ -20,6 +19,7 @@ const Profile = () => {
     useEffect(() => {
         getUserByLogin(login)
             .then(user => {
+                console.log(user);
                 setProfileUser(user);
             })
             .catch(error => {
@@ -31,16 +31,14 @@ const Profile = () => {
     }, []);
 
     return (
-        <Layout>
-            <div className="profile">
-                {!isLoading ? (
-                    <>
-                        {user.id === profileUser.id ? <UserProfile /> : <ViewProfile profileUser={profileUser} />}
-                        <UserAvatars profileUser={profileUser} clickDownload={clickDownload} />
-                    </>
-                ) : null}
-            </div>
-        </Layout>
+        <div className="profile gap-8">
+            {!isLoading ? (
+                <>
+                    {user.id === profileUser.id ? <UserProfile /> : <ViewProfile profileUser={profileUser} />}
+                    <UserAvatars profileUser={profileUser} clickDownload={clickDownload} />
+                </>
+            ) : null}
+        </div>
     );
 };
 

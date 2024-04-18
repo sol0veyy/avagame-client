@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
-import { REGISTRATION_ROUTE, LOGIN_ROUTE, PROFILE_ROUTE } from "../../utils/consts";
+import { REGISTRATION_ROUTE, LOGIN_ROUTE } from "../../utils/consts";
 
 import "./profileButton.scss";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../features/users/usersSlice";
+import { Button } from "@nextui-org/react";
+import UserAvatar from "../UserAvatar/UserAvatar";
 
 export const getNoun = (number: number, one: string, two: string, five: string) => {
     let n = Math.abs(number);
@@ -29,24 +31,16 @@ const ProfileButton = ({ className }: IProfileButton) => {
     const user = useSelector(selectUser);
 
     return (
-        <div className={`${className} col`}>
+        <div className={`${className}`}>
             {user.isAuth ?
-                <div className="d-flex justify-content-lg-end">
-                    <Link to={`/${user.login + PROFILE_ROUTE}`}>
-                        <img className="rounded-circle" width={50} src={user.img ? process.env.REACT_APP_API_URL + user.img : "img/nonAvatar.jpg"} alt="profile" />
-                    </Link>
-                    <div className="d-flex justify-content-around flex-column mx-2">
-                        <span>{user.login}</span>
-                        <span className="col__avatars text-white-50">{user.publications} {getNoun(user.publications, "аватарка", "аватарки", "аватарок")}</span>
-                    </div>
-                </div>
+                <UserAvatar user={user} size="lg" />
                 :
-                <div className="d-flex gap-2 justify-content-lg-end">
+                <div className="btn__group flex gap-2">
                     <Link to={REGISTRATION_ROUTE}>
-                        <button className="btn btn-outline-secondary">Регистрация</button>
+                        <Button>Регистрация</Button>
                     </Link>
                     <Link to={LOGIN_ROUTE}>
-                        <button className="btn btn-primary">Вход</button>
+                        <Button color="primary">Вход</Button>
                     </Link>
                 </div>
             }

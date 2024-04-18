@@ -1,11 +1,11 @@
 import axios, { InternalAxiosRequestConfig } from "axios";
 
 const $host = axios.create({
-    baseURL: 'http://185.187.91.72:5000/'
+    baseURL: process.env.REACT_APP_API_URL
 });
 
 const $authHost = axios.create({
-    baseURL: 'http://185.187.91.72:5000/'
+    baseURL: process.env.REACT_APP_API_URL
 });
 
 const authInterceptor = (config: InternalAxiosRequestConfig) => {

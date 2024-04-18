@@ -1,5 +1,6 @@
 import React, { Dispatch, SetStateAction } from "react";
 import './search.scss';
+import { Input } from "@nextui-org/react";
 
 interface ISearch {
     textInput: string;
@@ -10,13 +11,13 @@ interface ISearch {
 const Search = ({textInput, setText, className}: ISearch) => {
     return (
         <form className={`${className} search`} role="search">
-            <input 
+            <Input 
                 value={textInput}
                 onChange={event => setText(event.target.value)}
                 className="form-control me-2" 
                 type="search" 
-                placeholder="поиск" 
-                aria-label="Search"
+                placeholder="anime..."
+                variant="bordered"
                 id="mySearch" 
             />
         </form>

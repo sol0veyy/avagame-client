@@ -4,6 +4,8 @@ import { IViewProfile } from './ViewProfile';
 import { MAIN_ROUTE } from '../../../utils/consts';
 import { getIsUserFollow } from '../../../http/Follower/followerAPI';
 import { follow_unfollow } from '../../../http/Follower/followerFunctions';
+import { Button, Card, CardHeader } from '@nextui-org/react';
+import UserAvatar from '@/components/UserAvatar/UserAvatar';
 
 const ProfileInfo = ({ profileUser }: IViewProfile) => {
     const navigate = useNavigate();
@@ -21,31 +23,21 @@ const ProfileInfo = ({ profileUser }: IViewProfile) => {
     }, []);
 
     return (
-        <div className="profileInfo">
-            <div className="infoBlock">
-                <img
-                    src={process.env.REACT_APP_API_URL + profileUser.img}
-                    className="avatar"
-                    alt="avatar"
-                />
-                <span className="nickname">{profileUser.login}</span>
-                <span className="col-avatar">
-                    Количество аватарок - {profileUser.publications}
-                </span>
-                <button
-                    className="w-75 btn btn-outline-primary"
-                    onClick={() => navigate(MAIN_ROUTE)}
-                >
-                    Главная
-                </button>
-                {!isLoading ?
-                    <button 
+        <Card className="self-start">
+            <CardHeader className="flex justify-between">
+                <UserAvatar user={profileUser} size="lg" />
+                {!isLoading ? (
+                    <Button
+                        color={`${isFollow ? 'danger' : 'success'}`}
                         onClick={() => follow_unfollow(isFollow, setIsFollow, profileUser)}
-                        className={`w-75 btn ${isFollow ? 'btn-outline-danger' : 'btn-outline-success'}`}
-                    >{isFollow ? 'Отписаться' : 'Подписаться'}</button> : ''
-                }
-            </div>
-        </div>
+                    >
+                        {isFollow ? 'Отписаться' : 'Подписаться'}
+                    </Button>
+                ) : (
+                    ''
+                )}
+            </CardHeader>
+        </Card>
     );
 };
 

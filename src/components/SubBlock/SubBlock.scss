@@ -3,22 +3,7 @@
 .sub__block {
     min-width: 340px;
     height: calc(100vh - $headerHeightSize - 40px);
-    padding: 20px;
-
-    .user__block {
-        background-color: #1E1E1E;
-        padding: 12px;
-        border-radius: 25px;
-
-        .user__login {
-            color: #fff;
-            font-weight: bold;
-        }
-
-        .user__colAvatars {
-            font-size: 0.8em;
-        }
-    }
+    padding:  0 20px 20px;
 
     .btn__sub__block {
         background-color: #1E1E1E;
@@ -42,13 +27,11 @@
     }
     
     .content::-webkit-scrollbar {
-        background-color: #3E3E3E;
-        border-radius: 4px;
         width: 6px;
     }
 
     .content::-webkit-scrollbar-thumb {
-        background-color: #95989A;
+        background-color: #39393D;
         border-radius: 4px;
     }
 }
