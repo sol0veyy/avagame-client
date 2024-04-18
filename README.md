@@ -1,1 +1,1 @@
-# AvaGame Project
+# AvaGame Client
