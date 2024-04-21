@@ -48,59 +48,7 @@ const ChangeSettings = ({ isOpen, onClose, onOpenChange }: ChangeSettingsProps) 
     };
 
     return (
-        // <Modal active={modalActive}>
-        //     <form autoComplete='off'>
-                // <div className='mb-3'>
-                //     <label htmlFor="inputFile" className='form-label'>Новая аватарка</label>
-                //     <input id='inputFile' className='form-control' type="file" onChange={selectFile} />
-                // </div>
-        //         <div className='mb-3'>
-                    // <input 
-                    //     type="text"
-                    //     placeholder='Новый логин' 
-                    //     value={login} 
-                    //     onChange={(e) => setLogin(e.target.value)} 
-                    //     className='form-control' 
-                    // />
-        //         </div>
-        //         <div className='mb-3'>
-                    // <input 
-                    //     type="password" 
-                    //     placeholder="Новый пароль" 
-                    //     value={password} 
-                    //     onChange={(e) => setPassword(e.target.value)} 
-                    //     className='form-control' 
-                    // />
-        //         </div>
-        //         <div className='mb-3'>
-                    // <input 
-                    //     type="email" 
-                    //     placeholder="Новая почта" 
-                    //     value={email} 
-                    //     onChange={(e) => setEmail(e.target.value)} 
-                    //     className='form-control' 
-                    // />
-        //         </div>
-                // {error ?
-                //     <p className='text-danger text-center'>{error}</p>
-                //     :
-                //     ""
-                // }
-        //     </form>
-        //     <div className='d-flex justify-content-end gap-2'>
-                // <button 
-                //     onClick={() => {
-                //         setModalActive(false);
-                //         setError('');
-                //     }}
-                //     className='btn btn-outline-secondary'
-                // >
-                //     Закрыть
-                // </button>
-                // <button className='btn btn-success' onClick={startChange}>Сохранить</button>
-        //     </div>
-        // </Modal>
-        <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+        <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement='center'>
             <ModalContent>
                 <ModalHeader>Настройки профиля</ModalHeader>
                 <ModalBody>

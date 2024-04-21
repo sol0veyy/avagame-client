@@ -29,7 +29,7 @@ const Avatars = ({ textInput }: IPropsAvatars) => {
 
     return (
         <>
-            <div className="avatars__block">
+            <div className="avatars__block justify-around lg:justify-start">
                 {
                     (avatars ? [...avatars] : [])
                         .sort((a, b) => b.id - a.id)
@@ -41,14 +41,12 @@ const Avatars = ({ textInput }: IPropsAvatars) => {
                             />
                         ))}
             </div>
-            {pages.length > 1 ? 
+            {pages.length > 1 && 
                 <Pagination
                     pages={pages}
                     selectedPage={selectedPage}
                     setPage={setPage}
                 />
-                :
-                ''
             }
         </>
     );

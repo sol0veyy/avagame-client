@@ -69,7 +69,7 @@ const ModalUploadAvatar = ({ isOpen, onClose, onOpenChange }: ModalUploadAvatarP
     };
 
     return (
-        <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+        <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement='center'>
             <ModalContent>
                 <ModalHeader>
                     Публикация аватарки

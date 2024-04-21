@@ -25,13 +25,14 @@ export const getNoun = (number: number, one: string, two: string, five: string) 
 
 interface IProfileButton {
     className?: string;
+    navClose?: () => void;
 }
 
-const ProfileButton = ({ className }: IProfileButton) => {
+const ProfileButton = ({ className, navClose }: IProfileButton) => {
     const user = useSelector(selectUser);
 
     return (
-        <div className={`${className}`}>
+        <div className={`${className}`} onClick={navClose}>
             {user.isAuth ?
                 <UserAvatar user={user} size="lg" />
                 :

@@ -31,8 +31,8 @@ const SubBlock = () => {
     };
 
     return (
-        <div className="sub__block flex flex-col gap-3">
-            <div className="flex gap-3">
+        <div className="mt-4 lg:mt-0 sub__block flex flex-col gap-3">
+            <div className="flex gap-3 justify-around">
                 <Button 
                     color="default" 
                     variant={`${isActiveBlockMySubs ? 'bordered' : 'light'}`}

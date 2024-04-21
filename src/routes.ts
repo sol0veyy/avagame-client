@@ -1,7 +1,8 @@
 import Auth from "./pages/Auth";
 import Main from "./pages/Main";
 import Profile from "./pages/Profile";
-import { LOGIN_ROUTE, MAIN_ROUTE, PROFILE_ROUTE, REGISTRATION_ROUTE } from "./utils/consts";
+import Subs from "./pages/Subs";
+import { LOGIN_ROUTE, MAIN_ROUTE, PROFILE_ROUTE, REGISTRATION_ROUTE, SUBS_ROUTE } from "./utils/consts";
 
 interface IRoutes {
     path: string;
@@ -26,5 +27,9 @@ export const publicRoutes: IRoutes[] = [
     {
         path: '/:login' + PROFILE_ROUTE,
         Component: Profile
+    },
+    {
+        path: SUBS_ROUTE,
+        Component: Subs
     }
 ];

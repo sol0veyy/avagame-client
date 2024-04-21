@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { selectUser } from "../../../features/users/usersSlice";
 import { IAvatar } from "../../../features/avatars/interface";
 import CommentBlock from "../../CommentBlock/CommentBlock";
-import Delete from "../../../assets/delete.svg";
+import Delete from "@/assets/x.svg";
 import Download from "../../../assets/download.svg";
 import Heart from "../../../assets/heart.svg";
 import Chat from "../../../assets/chat.svg";

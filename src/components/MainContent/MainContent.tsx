@@ -16,7 +16,9 @@ const MainContent = ({textInput, setText}: IMainContent) => {
 
     return (
         <main>
-            {user.isAuth && <SubBlock />}
+            <div className="hidden lg:block">
+                {user.isAuth && <SubBlock />}
+            </div>
             <div className="main__block">
                 <Search textInput={textInput} setText={setText} />
                 <Avatars textInput={textInput} />

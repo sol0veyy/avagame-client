@@ -1,15 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { IViewProfile } from './ViewProfile';
-import { MAIN_ROUTE } from '../../../utils/consts';
+import { useEffect, useState } from 'react';
 import { getIsUserFollow } from '../../../http/Follower/followerAPI';
 import { follow_unfollow } from '../../../http/Follower/followerFunctions';
 import { Button, Card, CardHeader } from '@nextui-org/react';
 import UserAvatar from '@/components/UserAvatar/UserAvatar';
+import { UserInfoProps } from './UserInfo';
 
-const ProfileInfo = ({ profileUser }: IViewProfile) => {
-    const navigate = useNavigate();
-
+const VisitUserBlock = ({ profileUser }: UserInfoProps) => {
     const [isLoading, setIsLoading] = useState(true);
     const [isFollow, setIsFollow] = useState(false);
 
@@ -41,4 +37,4 @@ const ProfileInfo = ({ profileUser }: IViewProfile) => {
     );
 };
 
-export default ProfileInfo;
+export default VisitUserBlock;

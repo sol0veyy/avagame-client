@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Avatar from '../Avatar/Avatar';
-import './userAvatars.scss';
 import { getUserAvatars } from '../../../http/avatarsAPI';
 import ModalAcceptRemoveAvatar from '../../Modal/ModalAcceptRemoveAvatar';
 import { useDispatch, useSelector } from 'react-redux';
@@ -47,7 +46,7 @@ const UserAvatars = ({ profileUser, clickDownload }: IPropsUserAvatars) => {
     return (
         <>
             {!loading && avatars[0] ? (
-                <div className='avatarsBlockProfile'>
+                <div className='flex flex-wrap gap-4 col-span-3 mt-8 lg:mt-0 justify-around lg:justify-start'>
                     {avatars.map((avatar) => (
                         <Avatar
                             profile={user.id === profileUser.id}
@@ -65,9 +64,11 @@ const UserAvatars = ({ profileUser, clickDownload }: IPropsUserAvatars) => {
             ) : (
                 <>
                     {!loading && (
-                        <h2 className='noAvatars'>
-                            Нет опубликованных аватарок
-                        </h2>
+                        <div className='mt-8 lg:mt-0 flex justify-center items-center col-span-3'>
+                            <h2 className='text-default-400'>
+                                Нет опубликованных аватарок
+                            </h2>
+                        </div>
                     )}
                 </>
             )}

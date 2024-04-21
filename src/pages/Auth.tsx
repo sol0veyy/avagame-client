@@ -66,7 +66,7 @@ const Auth = () => {
 
     return (
         <div className='flex justify-center mt-36'>
-            <Card className="w-1/6 ">
+            <Card className="lg:w-1/6 ">
                 <CardHeader>
                     <div className='w-full'>
                         <h1 className="text-center text-lg">
