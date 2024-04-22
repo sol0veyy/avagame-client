@@ -7,7 +7,7 @@ interface ILayout {
 
 const Layout = ({ children }: ILayout) => {
     return (
-        <div className='h-screen grid grid-rows-12 grid-cols-1'>
+        <div className='h-svh grid grid-rows-12 grid-cols-1'>
             <Header />
             <div className='p-4 row-span-10 lg:row-span-11 overflow-auto lg:overflow-hidden'>
                 {children}
