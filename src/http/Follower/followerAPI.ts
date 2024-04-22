@@ -2,7 +2,7 @@ import { $authHost, $host } from "..";
 
 export const follow = async (userId: number) => {
     try {
-        const {data} = await $authHost.post('api/follower/follow', {userId});
+        const {data} = await $authHost.post('follower/follow', {userId});
 
         return data.follower;
     } catch (err) {
@@ -12,7 +12,7 @@ export const follow = async (userId: number) => {
 
 export const unfollow = async(userId: number) => {
     try {
-        const {data} = await $authHost.delete(`api/follower/unfollow/${userId}`);
+        const {data} = await $authHost.delete(`follower/unfollow/${userId}`);
 
         return data.follower;
     } catch (err) {
@@ -22,7 +22,7 @@ export const unfollow = async(userId: number) => {
 
 export const getIsUserFollow = async(userId: number) => {
     try {
-        const {data} = await $authHost.get(`api/follower/isUserFollow/${userId}`);
+        const {data} = await $authHost.get(`follower/isUserFollow/${userId}`);
 
         return data.isFollow;
     } catch (err) {
@@ -32,7 +32,7 @@ export const getIsUserFollow = async(userId: number) => {
 
 export const getAllUserSubs = async(followerId: number) => {
     try {
-        const {data} = await $host.get(`api/follower/userSubs/${followerId}`);
+        const {data} = await $host.get(`follower/userSubs/${followerId}`);
 
         return data.users;
     } catch (err) {
@@ -42,7 +42,7 @@ export const getAllUserSubs = async(followerId: number) => {
 
 export const getAllUserSubsByFilter = async (findText: string) => {
     try {
-        const {data} = await $authHost.get(`api/follower/userSubsByFilter/${findText}`);
+        const {data} = await $authHost.get(`follower/userSubsByFilter/${findText}`);
 
         return data.users;
     } catch (error) {

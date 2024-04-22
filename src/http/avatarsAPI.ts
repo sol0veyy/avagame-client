@@ -3,20 +3,20 @@ import { IUser } from "../features/users/usersSlice";
 import { update } from "./userAPI";
 
 export const createAvatar = async (avatarFormData: FormData, user: IUser) => {
-    const {data} = await $authHost.post('api/avatar', avatarFormData);
+    const {data} = await $authHost.post('avatar', avatarFormData);
     await update(user.id);
     return data;
 };
 
 export const deleteAvatar = async (avatarId: number, userId: number) => {
-    const {data} = await $authHost.post('api/avatar/del', {avatarId, userId});
+    const {data} = await $authHost.post('avatar/del', {avatarId, userId});
     await update(userId);
     return data;
 };
 
 export const setLikes = async (avatarId: number, userId: number) => {
     try {
-        const {data} = await $authHost.post('api/avatar/like', {avatarId, userId});
+        const {data} = await $authHost.post('avatar/like', {avatarId, userId});
         return data;
     } catch (err) {
         console.error(err);
@@ -25,7 +25,7 @@ export const setLikes = async (avatarId: number, userId: number) => {
 
 export const delLike = async (avatarId: number, userId: number) => {
     try {
-        const {data} = await $authHost.post('api/avatar/like/del', {avatarId, userId});
+        const {data} = await $authHost.post('avatar/like/del', {avatarId, userId});
         return data;
     } catch (err) {
         console.error(err);
@@ -34,7 +34,7 @@ export const delLike = async (avatarId: number, userId: number) => {
 
 export const getLike = async (avatarId: number, userId: number) => {
     try {
-        const {data} = await $host.get('api/avatar/like/' + avatarId + "/" + userId);
+        const {data} = await $host.get('avatar/like/' + avatarId + "/" + userId);
         return data;
     } catch (err) {
         console.error(err);
@@ -42,16 +42,16 @@ export const getLike = async (avatarId: number, userId: number) => {
 };
 
 export const getByTag = async (tag: string) => {
-    const {data} = await $host.get('api/avatar/tag/' + tag);
+    const {data} = await $host.get('avatar/tag/' + tag);
     return data;
 };
 
 export const getAll = async (page: number) => {
-    const {data} = await $host.get('api/avatar/' + page);
+    const {data} = await $host.get('avatar/' + page);
     return data;
 };
 
 export const getUserAvatars = async (userId: number) => {
-    const {data} = await $host.get('api/avatar/user/' + userId);
+    const {data} = await $host.get('avatar/user/' + userId);
     return data;
 };

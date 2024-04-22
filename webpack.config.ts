@@ -31,7 +31,7 @@ export default (env: EnvVariables) => {
             }),
             new webpack.ProgressPlugin(),
             new webpack.EnvironmentPlugin({
-                REACT_APP_API_URL: 'http://95.163.230.87:5000/'
+                REACT_APP_API_URL: 'https://api.avagame.site/'
             }),
             isProd && new MiniCssExtractPlugin({
                 filename: '[name].[contenthash].css'
