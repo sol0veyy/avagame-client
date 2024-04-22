@@ -1,7 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { Suspense, useEffect, useState } from 'react';
 import { getIsUserFollow } from '../../../http/Follower/followerAPI';
-import { getNoun } from '../../Button/ProfileButton';
+import { getNoun } from '../../ProfileButton/ProfileButton';
 import { useNavigate } from 'react-router-dom';
 import { PROFILE_ROUTE } from '../../../utils/consts';
 import { follow_unfollow } from '../../../http/Follower/followerFunctions';

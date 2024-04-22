@@ -1,3 +1,4 @@
+import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 
 interface ILayout {
@@ -9,6 +10,7 @@ const Layout = ({ children }: ILayout) => {
         <div className='min-h-screen'>
             <Header />
             {children}
+            <Footer />
         </div>
     );
 };

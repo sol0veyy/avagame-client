@@ -2,7 +2,7 @@ import { IUser } from "@/features/users/usersSlice";
 import { PROFILE_ROUTE } from "@/utils/consts";
 import { Avatar } from "@nextui-org/react";
 import { useNavigate } from "react-router-dom";
-import { getNoun } from "../Button/ProfileButton";
+import { getNoun } from "../ProfileButton/ProfileButton";
 
 interface UserAvatarProps {
     user: IUser;
