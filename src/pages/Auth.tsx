@@ -127,7 +127,7 @@ const Auth = () => {
                                 className='basis-2/3'
                                 color='primary'
                                 onClick={click}
-                            >{isLogin ? 'вход' : 'зарегистрироваться'}</Button>
+                            >{isLogin ? 'войти' : 'зарегистрироваться'}</Button>
                         </div>
                     </form>
                 </CardBody>
