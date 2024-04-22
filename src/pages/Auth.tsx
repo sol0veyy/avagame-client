@@ -66,7 +66,7 @@ const Auth = () => {
 
     return (
         <div className='flex justify-center mt-36'>
-            <Card className="lg:w-1/6 ">
+            <Card>
                 <CardHeader>
                     <div className='w-full'>
                         <h1 className="text-center text-lg">
@@ -96,7 +96,7 @@ const Auth = () => {
                                 onKeyDown={e => correctInput(e)}
                             />
                         }
-                        <div className='password__input'>
+                        <div className='flex items-center gap-2'>
                             <Input
                                 required
                                 type={typePass}
@@ -106,11 +106,13 @@ const Auth = () => {
                                 onChange={e => setPassword(e.target.value)}
                                 onKeyDown={e => correctInput(e)}
                             />
-                            {isPassView ?
-                                <PassNoView onClick={passOnView} className="password__control" />
-                                :
-                                <PassView onClick={passOnView} className="password__control" />
-                            }
+                            <Button isIconOnly variant='bordered' aria-label="Like">  
+                                {isPassView ?
+                                    <PassNoView width={25} height={25} onClick={passOnView} className="password__control" />
+                                    :
+                                    <PassView width={25} height={25} onClick={passOnView} className="password__control" />
+                                }
+                            </Button>  
                         </div>
                         {error &&
                             <div className="text-center text-danger text-small">
