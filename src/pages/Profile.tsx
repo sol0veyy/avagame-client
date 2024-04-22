@@ -23,7 +23,7 @@ const Profile = () => {
     }, []);
 
     return (
-        <div className="lg:grid grid-cols-4 gap-8 p-8">
+        <div className="lg:grid grid-cols-4 gap-8">
             {!isLoading && (
                 <>
                     <UserInfo profileUser={profileUser} />

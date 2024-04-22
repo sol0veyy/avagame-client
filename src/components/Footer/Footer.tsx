@@ -17,8 +17,8 @@ const Footer = () => {
     const isAuthRegPage = location.pathname === LOGIN_ROUTE || location.pathname === REGISTRATION_ROUTE;
 
     return (
-        <footer className={`${isAuthRegPage && 'hidden'} lg:hidden absolute bottom-0 w-full p-4`}>
-            <nav className='flex justify-around items-center'>
+        <footer className={`${isAuthRegPage && 'hidden'} row-span-1 lg:hidden w-full p-2`}>
+            <nav className='flex h-full justify-around items-center'>
                 {user.isAuth ?
                     <>
                         <Link to={`${user.login}${PROFILE_ROUTE}`}>

@@ -35,3 +35,13 @@
         border-radius: 4px;
     }
 }
+
+@media (max-width: 640px) {
+    .sub__block {
+        height: auto;
+
+        .content {
+            padding: 0px;
+        }
+    }
+}

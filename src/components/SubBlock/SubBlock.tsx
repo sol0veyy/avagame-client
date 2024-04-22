@@ -31,7 +31,7 @@ const SubBlock = () => {
     };
 
     return (
-        <div className="mt-4 lg:mt-0 sub__block flex flex-col gap-3">
+        <div className="lg:mt-0 sub__block flex flex-col gap-3">
             <div className="flex gap-3 justify-around">
                 <Button 
                     color="default" 
