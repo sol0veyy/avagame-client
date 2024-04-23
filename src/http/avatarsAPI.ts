@@ -46,8 +46,8 @@ export const getByTag = async (tag: string) => {
     return data;
 };
 
-export const getAll = async (page: number) => {
-    const {data} = await $host.get('avatar/' + page);
+export const getAll = async () => {
+    const {data} = await $host.get('avatar/');
     return data;
 };
 

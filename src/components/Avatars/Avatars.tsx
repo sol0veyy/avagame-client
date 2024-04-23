@@ -1,7 +1,6 @@
 import { Suspense, lazy, useEffect, useState } from 'react';
 import { getAll, getByTag } from '../../http/avatarsAPI';
 import { clickDownload } from './functions';
-import Pagination from '../Pagination/Pagination';
 import './avatars.scss';
 import { IAvatar } from '../../features/avatars/interface';
 import AvatarSkeleton from './Avatar/AvatarSkeleton';
@@ -14,20 +13,16 @@ const Avatar = lazy(() => import('./Avatar/Avatar'));
 
 const Avatars = ({ textInput }: IPropsAvatars) => {
     const [avatars, setAvatars] = useState<IAvatar[]>([]);
-    const [pages, setPages] = useState([]);
-    const [selectedPage, setPage] = useState(1);
 
     useEffect(() => {
         if (textInput && textInput !== '' && textInput.trim() !== '') {
             getByTag(textInput.trim()).then((data) => setAvatars(data));
         } else {
-            getAll(selectedPage).then((data) => {
+            getAll().then((data) => {
                 setAvatars(data.avatars);
-                const N = Math.round(data.colAvatars / 30) + 1;
-                setPages(Array.from({ length: N }, (_, index) => index + 1));
             });
         }
-    }, [textInput, selectedPage]);
+    }, [textInput]);
 
     return (
         <>
@@ -45,13 +40,6 @@ const Avatars = ({ textInput }: IPropsAvatars) => {
                             </Suspense>
                         ))}
             </div>
-            {pages.length > 1 && 
-                <Pagination
-                    pages={pages}
-                    selectedPage={selectedPage}
-                    setPage={setPage}
-                />
-            }
         </>
     );
 };
