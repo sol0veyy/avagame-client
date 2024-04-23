@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import Avatar from './Avatar/Avatar';
+import { Suspense, lazy, useEffect, useState } from 'react';
 import { getAll, getByTag } from '../../http/avatarsAPI';
 import { clickDownload } from './functions';
 import Pagination from '../Pagination/Pagination';
 import './avatars.scss';
 import { IAvatar } from '../../features/avatars/interface';
+import AvatarSkeleton from './Avatar/AvatarSkeleton';
 
 interface IPropsAvatars {
     textInput?: string;
 }
+
+const Avatar = lazy(() => import('./Avatar/Avatar'));
 
 const Avatars = ({ textInput }: IPropsAvatars) => {
     const [avatars, setAvatars] = useState<IAvatar[]>([]);
@@ -34,11 +36,13 @@ const Avatars = ({ textInput }: IPropsAvatars) => {
                     (avatars ? [...avatars] : [])
                         .sort((a, b) => b.id - a.id)
                         .map((avatar) => (
-                            <Avatar
-                                clickDownload={clickDownload}
-                                avatar={avatar}
-                                key={avatar.id}
-                            />
+                            <Suspense key={avatar.id} fallback={<AvatarSkeleton />}>
+                                <Avatar
+                                    clickDownload={clickDownload}
+                                    avatar={avatar}
+                                    key={avatar.id}
+                                />
+                            </Suspense>
                         ))}
             </div>
             {pages.length > 1 && 

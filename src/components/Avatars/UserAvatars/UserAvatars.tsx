@@ -1,11 +1,13 @@
-import { useEffect, useState } from 'react';
-import Avatar from '../Avatar/Avatar';
+import { Suspense, lazy, useEffect, useState } from 'react';
 import { getUserAvatars } from '../../../http/avatarsAPI';
 import ModalAcceptRemoveAvatar from '../../Modal/ModalAcceptRemoveAvatar';
 import { useDispatch, useSelector } from 'react-redux';
 import { IUser, selectUser } from '../../../features/users/usersSlice';
 import { IAvatar } from '../../../features/avatars/interface';
 import { selectAvatars, setAvatars } from '../../../features/avatars/avatarsSlice';
+import AvatarSkeleton from '../Avatar/AvatarSkeleton';
+
+const Avatar = lazy(() => import('../Avatar/Avatar'));
 
 interface IPropsUserAvatars {
     profileUser: IUser;
@@ -48,13 +50,15 @@ const UserAvatars = ({ profileUser, clickDownload }: IPropsUserAvatars) => {
             {!loading && avatars[0] ? (
                 <div className='flex flex-wrap gap-4 col-span-3 mt-8 lg:mt-0 justify-around lg:justify-start'>
                     {avatars.map((avatar) => (
-                        <Avatar
-                            profile={user.id === profileUser.id}
-                            clickDel={clickDel}
-                            clickDownload={clickDownload}
-                            avatar={avatar}
-                            key={avatar.id}
-                        />
+                        <Suspense fallback={<AvatarSkeleton />}>
+                            <Avatar
+                                profile={user.id === profileUser.id}
+                                clickDel={clickDel}
+                                clickDownload={clickDownload}
+                                avatar={avatar}
+                                key={avatar.id}
+                            />
+                        </Suspense>
                     ))}
                     <ModalAcceptRemoveAvatar
                         modalAccept={modalAccept}
