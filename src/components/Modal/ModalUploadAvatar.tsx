@@ -52,6 +52,21 @@ const ModalUploadAvatar = ({
         setViewImg(true);
     };
 
+    const deleteHashInTags = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.code === 'Backspace' && tags[tags.length - 1] === '#') {
+            setTags(tags.slice(0, -1));
+        }
+    }
+
+    const onChangeTags = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const cleanTags = e.target.value.replace(/#/g, ''); // Удаляем все символы #
+        const tagsArray = cleanTags.split(/\s+/); // Разделяем строку на массив тегов
+    
+        const result = tagsArray.map(tag => `#${tag}`).join(' '); // Добавляем # перед каждым тегом и объединяем их обратно в строку
+    
+        setTags(result);
+    }
+
     useEffect(() => {
         if (file) {
             setImgUrl(URL.createObjectURL(file));
@@ -153,7 +168,9 @@ const ModalUploadAvatar = ({
                             id="inputTags"
                             type="text"
                             label="Теги"
-                            onChange={(e) => setTags(e.target.value)}
+                            value={tags}
+                            onKeyDown={deleteHashInTags}
+                            onChange={onChangeTags}
                         />
                     </form>
                 </ModalBody>
