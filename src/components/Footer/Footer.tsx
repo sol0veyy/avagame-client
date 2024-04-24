@@ -11,24 +11,28 @@ const Footer = () => {
     const user = useSelector(selectUser);
     const location = useLocation();
 
-    const SVGProfileSize = location.pathname === `/${user.login}${PROFILE_ROUTE}` ? 30 : 25;
-    const SVGHomeSize = location.pathname === MAIN_ROUTE ? 30 : 25;
-    const SVGSubsSize = location.pathname === SUBS_ROUTE ? 30 : 25;
-    const isAuthRegPage = location.pathname === LOGIN_ROUTE || location.pathname === REGISTRATION_ROUTE;
+    const isProfileLocation = location.pathname === `/${user.login}${PROFILE_ROUTE}`;
+    const isHomeLocation = location.pathname === MAIN_ROUTE;
+    const isSubsLocation = location.pathname === SUBS_ROUTE;
+    const isAuthRegLocation = location.pathname === LOGIN_ROUTE || location.pathname === REGISTRATION_ROUTE;
+
+    const SVGProfileSize = isProfileLocation ? 30 : 25;
+    const SVGHomeSize = isHomeLocation ? 30 : 25;
+    const SVGSubsSize = isSubsLocation ? 30 : 25;
 
     return (
-        <footer className={`${isAuthRegPage && 'hidden'} row-span-1 lg:hidden w-full p-2`}>
+        <footer className={`${isAuthRegLocation && 'hidden'} border-t-1 border-gray-800 row-span-1 lg:hidden w-full p-2`}>
             <nav className='flex h-full justify-around items-center'>
                 {user.isAuth ?
                     <>
                         <Link to={`${user.login}${PROFILE_ROUTE}`}>
-                            <SVGProfile width={SVGProfileSize} height={SVGProfileSize} />
+                            <SVGProfile fill={`${!isProfileLocation ? 'gray' : 'white'}`} width={SVGProfileSize} height={SVGProfileSize} />
                         </Link>
                         <Link to={MAIN_ROUTE}>
-                            <SVGHome width={SVGHomeSize} height={SVGHomeSize} />
+                            <SVGHome fill={`${!isHomeLocation ? 'gray' : 'white'}`} width={SVGHomeSize} height={SVGHomeSize} />
                         </Link>
                         <Link to={SUBS_ROUTE}>
-                            <SVGSubs width={SVGSubsSize} height={SVGSubsSize} />
+                            <SVGSubs fill={`${!isSubsLocation ? 'gray' : 'white'}`} width={SVGSubsSize} height={SVGSubsSize} />
                         </Link>
                     </>
                     :
