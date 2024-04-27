@@ -50,7 +50,7 @@ const UserAvatars = ({ profileUser, clickDownload }: IPropsUserAvatars) => {
             {!loading && avatars[0] ? (
                 <div className='flex flex-wrap gap-4 col-span-3 mt-8 lg:mt-0 justify-around lg:justify-start'>
                     {avatars.map((avatar) => (
-                        <Suspense fallback={<AvatarSkeleton />}>
+                        <Suspense key={avatar.id} fallback={<AvatarSkeleton />}>
                             <Avatar
                                 profile={user.id === profileUser.id}
                                 clickDel={clickDel}

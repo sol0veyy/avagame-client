@@ -9,6 +9,7 @@ import Delete from "@/assets/x.svg";
 import Download from "../../../assets/download.svg";
 import Heart from "../../../assets/heart.svg";
 import Chat from "../../../assets/chat.svg";
+import { Skeleton } from "@nextui-org/react";
 
 interface IPropsAvatar {
     clickDel?: (avatar: IAvatar) => void;
@@ -23,6 +24,7 @@ const Avatar = ({ clickDel, clickDownload, avatar, profile }: IPropsAvatar) => {
     const [userAvatar, setUserAvatar] = useState(avatar);
     const [onLike, setOnLike] = useState(false);
     const [activeCommentBlock, setActiveCommentBlock] = useState(false);
+    const [isImgLoaded, setIsImgLoaded] = useState(false);
     
     useEffect(() => {
         getLike(userAvatar.id, user.id)
@@ -64,7 +66,14 @@ const Avatar = ({ clickDel, clickDownload, avatar, profile }: IPropsAvatar) => {
             <div className="download__block">
                 <Download onClick={() => clickDownload(avatar)} className="download" width={22} height={22} />
             </div>
-            <img className="picture" width={150} src={process.env.REACT_APP_API_URL + avatar.img} alt="avatar" />
+            <div className="w-[150px] h-[150px]">
+                {!isImgLoaded && (
+                    <Skeleton>
+                        <div className="h-[150px] rounded-lg bg-default-300"></div>
+                    </Skeleton>
+                )}
+                <img onLoad={() => setIsImgLoaded(true)} className={`${!isImgLoaded && 'hidden'} picture`} width={150} src={process.env.REACT_APP_API_URL + avatar.img} alt="avatar" />
+            </div>
             <footer>
                 <div className="heart__block">
                     <Heart onClick={clickHeart} className="heart" fill={`${onLike ? 'red' : 'currentColor'}`} width={20} height={20} />
