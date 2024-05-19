@@ -9,6 +9,15 @@
     font-family: 'Montserrat', 'sans-serif';
 }
 
+*::-webkit-scrollbar {
+    width: 6px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #39393D;
+    border-radius: 4px;
+}
+
 .logo {
     margin: 0 40px 0 40px; 
 }

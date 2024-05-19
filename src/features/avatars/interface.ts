@@ -1,3 +1,5 @@
+import { IUser } from '../users/usersSlice';
+
 export interface IAvatar {
     id: number;
     img: string;
@@ -7,6 +9,7 @@ export interface IAvatar {
     updatedAt: string;
     createdAt: string;
     date: string;
+    user: IUser;
 }
 
 interface ILike {
