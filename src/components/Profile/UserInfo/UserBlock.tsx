@@ -4,7 +4,7 @@ import Settings from "../Settings/Settings";
 import Logout from '@/assets/logout.svg';
 import { useDispatch } from "react-redux";
 import { logout } from "@/features/users/usersSlice";
-import { MAIN_ROUTE } from "@/utils/consts";
+import { MAIN_ROUTE } from "@/shared/utils/consts";
 import { useNavigate } from "react-router-dom";
 import AvatarUpload from "../AvatarUpload/AvatarUpload";
 import { UserInfoProps } from "./UserInfo";

@@ -2,7 +2,7 @@ import SVGProfile from '@/assets/person-circle.svg';
 import SVGHome from '@/assets/images.svg';
 import SVGSubs from '@/assets/people-fill.svg';
 import { Link, useLocation } from 'react-router-dom';
-import { LOGIN_ROUTE, MAIN_ROUTE, PROFILE_ROUTE, REGISTRATION_ROUTE, SUBS_ROUTE } from '@/utils/consts';
+import { LOGIN_ROUTE, MAIN_ROUTE, PROFILE_ROUTE, REGISTRATION_ROUTE, SUBS_ROUTE } from '@/shared/utils/consts';
 import { useSelector } from 'react-redux';
 import { selectUser } from '@/features/users/usersSlice';
 import ProfileButton from '../ProfileButton/ProfileButton';

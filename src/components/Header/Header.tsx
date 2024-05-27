@@ -1,5 +1,5 @@
 import ProfileButton from "../ProfileButton/ProfileButton";
-import { MAIN_ROUTE } from "../../utils/consts";
+import { MAIN_ROUTE } from "../../shared/utils/consts";
 import { Link } from "react-router-dom";
 import logo from '../../assets/logo.png';
 

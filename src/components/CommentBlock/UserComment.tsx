@@ -21,7 +21,7 @@ const UserComment = ({ comment, handleTrash }: UserCommentProps) => {
                 />
             </div>
             <div className="flex flex-col justify-between">
-                <span className="text-sm font-bold">ScraY</span>
+                <span className="text-sm font-bold">{comment.user.login}</span>
                 <span className="text-sm">{comment.comment}</span>
             </div>
             {user.id === comment.user.id &&            

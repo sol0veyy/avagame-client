@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { LOGIN_ROUTE, MAIN_ROUTE, REGISTRATION_ROUTE } from '../utils/consts';
-import '../styles/reg-auth.scss';
-import { loginIn, registration } from '../http/userAPI';
+import { LOGIN_ROUTE, MAIN_ROUTE, REGISTRATION_ROUTE } from '@/shared/utils/consts';
+import '@/styles/reg-auth.scss';
+import { loginIn, registration } from '@/http/userAPI';
 import { useDispatch } from 'react-redux';
-import { IUser, setUser } from '../features/users/usersSlice';
-import PassView from '../assets/view.svg';
-import PassNoView from '../assets/no-view.svg';
+import { IUser, setUser } from '@/features/users/usersSlice';
+import PassView from '@/assets/view.svg';
+import PassNoView from '@/assets/no-view.svg';
 import { Button, Card, CardBody, CardFooter, CardHeader, Input } from '@nextui-org/react';
 
 const Auth = () => {
@@ -18,8 +18,10 @@ const Auth = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const [isPassView, setIsPassView] = useState(false);
-    const [typePass, setTypePass] = useState('password');
+    const [passwordInput, setPasswordInput] = useState({
+        isView: false,
+        type: 'password'
+    })
 
     const click = () => {
         if (isLogin) {
@@ -47,20 +49,6 @@ const Auth = () => {
     const correctInput = (e: React.KeyboardEvent) => {
         if (e.key === ' ') {
             e.preventDefault();
-        }
-    };
-
-    const clearError = () => {
-        setError('');
-    };
-
-    const passOnView = () => {
-        if (isPassView) {
-            setIsPassView(false);
-            setTypePass('password');
-        } else {
-            setIsPassView(true);
-            setTypePass('text');
         }
     };
 
@@ -99,7 +87,7 @@ const Auth = () => {
                         <div className='flex items-center gap-2'>
                             <Input
                                 required
-                                type={typePass}
+                                type={passwordInput.type}
                                 name="password"
                                 placeholder="Пароль"
                                 value={password}
@@ -107,10 +95,16 @@ const Auth = () => {
                                 onKeyDown={e => correctInput(e)}
                             />
                             <Button isIconOnly variant='bordered' aria-label="Like">  
-                                {isPassView ?
-                                    <PassNoView width={25} height={25} onClick={passOnView} className="password__control" />
+                                {passwordInput.isView ?
+                                    <PassNoView width={25} height={25} onClick={() => setPasswordInput({
+                                        type: 'password',
+                                        isView: false
+                                    })} className="password__control" />
                                     :
-                                    <PassView width={25} height={25} onClick={passOnView} className="password__control" />
+                                    <PassView width={25} height={25} onClick={() => setPasswordInput({
+                                        type: 'text',
+                                        isView: true
+                                    })} className="password__control" />
                                 }
                             </Button>  
                         </div>
@@ -134,11 +128,11 @@ const Auth = () => {
                 <CardFooter>
                     {isLogin ?
                         <p className="text-center text-small">
-                            У вас нет аккаунта? - <Link className="text-success text-small" onClick={clearError} to={REGISTRATION_ROUTE}>зарегистрируйтесь</Link>
+                            У вас нет аккаунта? - <Link className="text-success text-small" onClick={() => setError('')} to={REGISTRATION_ROUTE}>зарегистрируйтесь</Link>
                         </p>
                         :
                         <p className="text-center text-small">
-                            У вас есть аккаунт? - <Link className="text-success text-small" onClick={clearError} to={LOGIN_ROUTE}>авторизируйтесь</Link>
+                            У вас есть аккаунт? - <Link className="text-success text-small" onClick={() => setError('')} to={LOGIN_ROUTE}>авторизируйтесь</Link>
                         </p>
                     }
                 </CardFooter>

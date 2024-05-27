@@ -3,7 +3,7 @@ import { Suspense, useEffect, useState } from 'react';
 import { getIsUserFollow } from '../../../http/Follower/followerAPI';
 import { getNoun } from '../../ProfileButton/ProfileButton';
 import { useNavigate } from 'react-router-dom';
-import { PROFILE_ROUTE } from '../../../utils/consts';
+import { PROFILE_ROUTE } from '../../../shared/utils/consts';
 import { follow_unfollow } from '../../../http/Follower/followerFunctions';
 import { useSelector } from 'react-redux';
 import { IUser, selectUser } from '../../../features/users/usersSlice';

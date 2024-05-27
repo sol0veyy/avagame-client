@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { REGISTRATION_ROUTE, LOGIN_ROUTE } from "../../utils/consts";
+import { REGISTRATION_ROUTE, LOGIN_ROUTE } from "../../shared/utils/consts";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../features/users/usersSlice";
 import { Button } from "@nextui-org/react";
